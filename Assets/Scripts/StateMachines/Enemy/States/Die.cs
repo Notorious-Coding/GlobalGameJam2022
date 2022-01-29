@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class Die : State
 {
-    [SerializeField] Cooldown _deathTime;
+    [SerializeField]
+    private Cooldown _deathTime;
 
     public override void HandleLogic()
     {

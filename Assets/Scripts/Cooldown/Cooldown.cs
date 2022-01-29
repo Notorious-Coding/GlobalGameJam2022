@@ -7,6 +7,17 @@ public class Cooldown
     private bool _isStarted;
     [SerializeField]
     private float _cooldown;
+
+    public float TimeRemaining
+    {
+        get
+        {
+            if (!_isStarted)
+                return 0.0f;
+
+            return (_started + _cooldown) - Time.time;
+        }
+    }
     public Cooldown(float seconds)
     {
         _cooldown = seconds;
@@ -21,6 +32,8 @@ public class Cooldown
     {
         _isStarted = false;
     }
+
+    
 
     public bool isEnded
     {

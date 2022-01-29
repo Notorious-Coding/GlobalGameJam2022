@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Enemy : StateMachine
+public class Enemy : StateMachine, ITargetLock
 {
     [SerializeField]
     Transform _chaman;
@@ -19,7 +19,6 @@ public class Enemy : StateMachine
 
     public void Update()
     {
-        Debug.Log(CurrentState);
         // Dès qu'on est assez proche du chaman
         if(Vector3.Distance(_chaman.position, transform.position) <= 2)
         {
@@ -39,6 +38,13 @@ public class Enemy : StateMachine
     public void FixedUpdate()
     {
         CurrentState.HandlePhysicsLogic();
+    }
+
+    public void LockTarget(Entity entity)
+    {
+        _chaman = entity.transform;
+        GetState<WalkTo>().LockTarget(entity);
+        GetState<Explode>().LockTarget(entity);
     }
 }
 

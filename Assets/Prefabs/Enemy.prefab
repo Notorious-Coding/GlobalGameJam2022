@@ -261,7 +261,9 @@ MonoBehaviour:
   _states:
   - {fileID: 101902702}
   - {fileID: 101902701}
+  - {fileID: 4662311883570961987}
   _chaman: {fileID: 0}
+  _explosionEffect: {fileID: 2155705163573157339}
 --- !u!114 &101902702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,11 +276,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5a5965ff762f6469db2eed42132d2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 10
   _explosionObject: {fileID: 2155705163573157339}
   _explosionTime:
-    _cooldown: 10
+    _cooldown: 1
   _target: {fileID: 0}
+  _damage: 10
 --- !u!114 &101902701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,8 +293,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 889d26775276b724d9ce12c2a33e65ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
   _rigibody: {fileID: 868216272217545940}
+  _target: {fileID: 0}
   _speed: 3
 --- !u!114 &4662311883570961987
 MonoBehaviour:
@@ -306,6 +308,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9744b25592001564bb15b1ac21e8c32d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _deathTime:
+    _cooldown: 1
 --- !u!54 &868216272217545940
 Rigidbody:
   m_ObjectHideFlags: 0

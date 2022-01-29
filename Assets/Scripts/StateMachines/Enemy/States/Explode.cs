@@ -1,12 +1,12 @@
 ﻿
 using UnityEngine;
 
-public class Explode : State
+public class Explode : State, ITargetLock
 {
-    [SerializeField] int _damage;
     [SerializeField] GameObject _explosionObject;
     [SerializeField] Cooldown _explosionTime;
     [SerializeField] Entity _target;
+    [SerializeField] int _damage;
 
     public override void OnStateEnter()
     {
@@ -33,6 +33,11 @@ public class Explode : State
     public override void OnStateExit()
     {
         base.OnStateExit();
+    }
+
+    public void LockTarget(Entity target)
+    {
+        _target = target;
     }
 }
 
