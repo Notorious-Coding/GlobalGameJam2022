@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public delegate void OnElementalBalanceValueChangeDelegate(float amount);
-public delegate void OnElementalBalanceStatusChangeDelegate(StatusEnum newStatus);
+public delegate void OnElementalBalanceStatusGameEventDataDelegate(StatusGameEventData newStatus);
+public delegate void OnElementBalanceCurrentStatusIntenistyChangeDelegate(float newIntensity);
 
 [CreateAssetMenu(menuName = "ElementBalanceBarData")]
 public class ElementalBalanceSO : ScriptableObject
@@ -15,47 +17,63 @@ public class ElementalBalanceSO : ScriptableObject
     public float MinValue;
     [Range(min: 10, max: 5000)]
     public float MaxValue;
-    [Range(min: 5, max: 2500)]
-    public float StepSize;
+
+    public List<int> Intensities;
 
     public StatusEnum FirstStatus;
     public StatusEnum SecondStatus;
-
-    public StatusEnum CurrentStatus;
+    private StatusGameEventData _statusGameEventData;
 
     public event OnElementalBalanceValueChangeDelegate OnElementalBalanceValueChangeEvent;
-    public event OnElementalBalanceStatusChangeDelegate OnElementalBalanceStatusChangeEvent;
+    public event OnElementalBalanceStatusGameEventDataDelegate OnElementalBalanceStatusGameEventDataEvent;
     public void UpdateElementalBalanceValue(int amount)
     {
-        StatusEnum oldValue = CurrentStatus;
+        StatusGameEventData oldStatusValue = _statusGameEventData;
         ElementalBalanceValue += amount;
-        if (amount < MinValue)
+        ManageElementalBalanceValueChange();
+        CheckCurrentStatus();
+        CheckCurrentIntensity();
+        if (!_statusGameEventData.Equals(oldStatusValue))
+        {
+            OnElementalBalanceStatusGameEventDataEvent(_statusGameEventData);
+        }
+        OnElementalBalanceValueChangeEvent(ElementalBalanceValue);
+    }
+
+    private void CheckCurrentIntensity()
+    {
+        float absElementalValue = Mathf.Abs(ElementalBalanceValue);
+        _statusGameEventData.intensity =  Intensities.LastOrDefault(val => absElementalValue >= val);
+
+    }
+
+    private void CheckCurrentStatus()
+    {
+        if (ElementalBalanceValue < 0)
+        {
+            _statusGameEventData.status = FirstStatus;
+        }
+        if (ElementalBalanceValue == 0)
+        {
+            _statusGameEventData.status = StatusEnum.EmptyStatus;
+        }
+        if (ElementalBalanceValue > 0)
+        {
+            _statusGameEventData.status = SecondStatus;
+        }
+    }
+
+    private void ManageElementalBalanceValueChange()
+    {
+        if (ElementalBalanceValue < MinValue)
         {
             ElementalBalanceValue = MinValue;
         }
 
-        if (amount > MaxValue)
+        if (ElementalBalanceValue > MaxValue)
         {
             ElementalBalanceValue = MaxValue;
         }
-
-        if(ElementalBalanceValue < 0)
-        {
-            CurrentStatus = FirstStatus;
-        }
-        if(ElementalBalanceValue == 0)
-        {
-            CurrentStatus = StatusEnum.EmptyStatus;
-        }
-        if(ElementalBalanceValue > 0)
-        {
-            CurrentStatus = SecondStatus;
-        }
-        if (!CurrentStatus.Equals(oldValue))
-        {
-            OnElementalBalanceStatusChangeEvent(CurrentStatus);
-        }
-        OnElementalBalanceValueChangeEvent(ElementalBalanceValue);
     }
 
     public void SubscribeToElementalBalanceValue(OnElementalBalanceValueChangeDelegate elementalBalanceValueChangeDelegate)
@@ -68,29 +86,20 @@ public class ElementalBalanceSO : ScriptableObject
         OnElementalBalanceValueChangeEvent -= elementalBalanceValueChangeDelegate;
     }
 
-    public void SubscribeToElementalBalanceStatus(OnElementalBalanceStatusChangeDelegate elementalBalanceStatusChangeDelegate)
+    public void SubscribeToElementalBalanceStatus(OnElementalBalanceStatusGameEventDataDelegate elementalBalanceStatusChangeDelegate)
     {
-        OnElementalBalanceStatusChangeEvent += elementalBalanceStatusChangeDelegate;
+        OnElementalBalanceStatusGameEventDataEvent += elementalBalanceStatusChangeDelegate;
     }
 
-    public void UnsubscribeToElementalBalanceStatus(OnElementalBalanceStatusChangeDelegate elementalBalanceStatusChangeDelegate)
+    public void UnsubscribeToElementalBalanceStatus(OnElementalBalanceStatusGameEventDataDelegate elementalBalanceStatusChangeDelegate)
     {
-        OnElementalBalanceStatusChangeEvent -= elementalBalanceStatusChangeDelegate;
+        OnElementalBalanceStatusGameEventDataEvent -= elementalBalanceStatusChangeDelegate;
     }
+
 
     void OnValidate()
     {
         MinValue = Mathf.Round(MinValue / 10f) * 10f;
         MaxValue = Mathf.Round(MaxValue / 10f) * 10f;
-        StepSize = Mathf.Round(StepSize / 5f) * 5f;
-        if (StepSize > MaxValue / 2)
-        {
-            StepSize = MaxValue / 2;
-        }
-
-        if (StepSize < MinValue)
-        {
-            StepSize = MinValue / 2;
-        }
     }
 }

@@ -4,9 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public enum StatusEnum
+class BalanceStep
 {
-    EmptyStatus,
-    Fire,
-    Water
 }
