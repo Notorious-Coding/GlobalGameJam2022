@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 3629486023054990851}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -264,6 +264,7 @@ MonoBehaviour:
   - {fileID: 4662311883570961987}
   _chaman: {fileID: 0}
   _explosionEffect: {fileID: 2155705163573157339}
+  life: 10
 --- !u!114 &101902702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _deathTime:
-    _cooldown: 1
+    _cooldown: 0.5
 --- !u!54 &868216272217545940
 Rigidbody:
   m_ObjectHideFlags: 0

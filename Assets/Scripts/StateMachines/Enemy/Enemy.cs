@@ -6,6 +6,7 @@ public class Enemy : StateMachine, ITargetLock
     Transform _chaman;
 
     [SerializeField] GameObject _explosionEffect;
+    [SerializeField] float life;
 
     void Awake()
     {
@@ -19,6 +20,10 @@ public class Enemy : StateMachine, ITargetLock
 
     public void Update()
     {
+        if(life <= 0 && !(CurrentState is Die))
+        {
+            SetState(GetState<Die>());
+        }
         // Dès qu'on est assez proche du chaman
         if(Vector3.Distance(_chaman.position, transform.position) <= 2)
         {
@@ -45,6 +50,11 @@ public class Enemy : StateMachine, ITargetLock
         _chaman = entity.transform;
         GetState<WalkTo>().LockTarget(entity);
         GetState<Explode>().LockTarget(entity);
+    }
+
+    public void TakeDamage(int amount)
+    {
+        life -= amount;
     }
 }
 
