@@ -11,9 +11,10 @@ public class WavesDataSO
 
     public event OnNewWaveStartDelegate OnNewWaveStartEvent;
 
-    public void StartNextWave(int value)
+    public void StartNextWave()
     {
-        Life += value;
+        WaveNumber += 1;
+
         OnLifeChangeEvent(Life);
     }
 
