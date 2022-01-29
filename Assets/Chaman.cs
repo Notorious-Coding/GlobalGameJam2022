@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Chaman : MonoBehaviour
+public class Chaman : StateMachine
 {
     [SerializeField]
     ChamanDataSO _data;
@@ -15,10 +13,21 @@ public class Chaman : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if(Jappuie sur ma touche)
+        //{
+        //    this.SetState(GetState<AvancerState>())
+        //}
+
+        this.CurrentState.HandleLogic();
         TakeDamage(10);
     }
 
-    public void TakeDamage(int damage)
+    private void FixedUpdate()
+    {
+        this.CurrentState.HandlePhysicsLogic();
+    }
+
+    public void TakeDamage(int damage) 
     {
         _data.UpdateLife(-damage);
     }
