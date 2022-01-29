@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : StateMachine
 {
     [Header("Mouvement")]
     [SerializeField]
@@ -11,18 +11,38 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody _rigidbody;
     Vector2 _moveInput;
     Vector2 _turnInput;
-
-    [Header("Attaques simple")]
     [SerializeField] Cooldown _attackRate;
-    [SerializeField] GameObject _projectilePrefab;
-    [SerializeField] Transform _firePoint;
 
-
-
+    private void Awake()
+    {
+        SetState(GetState<DefaultState>());
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
+        Move();
+        Turn();
+
+        CurrentState.HandlePhysicsLogic();
+    }
+
+    protected void Update()
+    {
+        // Si on tirer un basic spell et qu'il est terminé
+        if(CurrentState.IsStateComplete && CurrentState is BasicSpellState)
+        {
+            SetState(GetState<DefaultState>());
+        }
+        CurrentState.HandleLogic();
+    }
+
+    public void Move()
+    {
         _rigidbody.MovePosition(this.transform.position + new Vector3(_moveInput.x, 0, _moveInput.y) * _moveSpeed * Time.deltaTime);
+    }
+
+    public void Turn()
+    {
         var fwd = new Vector3(_turnInput.x, 0, _turnInput.y);
         transform.forward = fwd;
     }
@@ -37,18 +57,13 @@ public class PlayerController : MonoBehaviour
         _turnInput = ctx.ReadValue<Vector2>();
     }
 
-    public void OnFire(InputAction.CallbackContext ctx)
+    public void OnFireBasicSpell(InputAction.CallbackContext ctx)
     {
         if (_attackRate.isEnded)
         {
-            Fire();
+            SetState(GetState<BasicSpellState>());
             _attackRate.Stop();
             _attackRate.Start();
         }
-    }
-
-    public void Fire()
-    {
-        var projectile = Instantiate(_projectilePrefab, _firePoint.position, _firePoint.rotation);
     }
 }

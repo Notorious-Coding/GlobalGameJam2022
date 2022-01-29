@@ -36,7 +36,6 @@ public class EnemyWaveManager : MonoBehaviour
         foreach (var enemy in _firstWave)
         {
             var enemyCount = ComputeCurrentWaveEnemyCount(enemy.Count);
-            Debug.Log(enemyCount);
 
             for(int i = 0; i < enemyCount; i++)
             {

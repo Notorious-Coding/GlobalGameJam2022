@@ -24,9 +24,27 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Fire",
+                    "name": "FireBasicSpell",
                     "type": "Button",
                     "id": "58f4947b-f908-4971-8340-b857682f599f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "FireMassiveSpell",
+                    "type": "Button",
+                    "id": "f3395044-0692-403c-819a-1b0791bdbc7f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ValidateMassiveSpell",
+                    "type": "Button",
+                    "id": "9beb01d2-65e5-4136-90f9-d14352a0b23e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -113,12 +131,34 @@
                 },
                 {
                     "name": "",
-                    "id": "bbde88e3-b3c7-4b8d-a6bb-6f51432008f4",
+                    "id": "d125cd62-108b-40d0-b908-9ed63ae25096",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "FireBasicSpell",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f7390628-a079-4544-bd2a-61b48aa0c558",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "GamePad",
-                    "action": "Fire",
+                    "action": "FireMassiveSpell",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4fe41df5-0a53-4f7e-a85f-548afbd7e30d",
+                    "path": "<Gamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "ValidateMassiveSpell",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
