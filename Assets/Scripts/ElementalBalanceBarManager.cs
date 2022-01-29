@@ -8,13 +8,13 @@ public class ElementalBalanceBarManager : MonoBehaviour
     [SerializeField]
     ElementalBalanceSO _data;
 
+    public GameObject StepPrefab;
+    public RectTransform ParentStepsTransform;
     public Slider ElementalBalanceBarSlider;
     // Start is called before the first frame update
     void Start()
     {
-        ElementalBalanceBarSlider.minValue = _data.MinValue;
-        ElementalBalanceBarSlider.maxValue = _data.MaxValue;
-        _data.SubscribeToElementalBalanceValue(updateSliderValues);
+        InstantiateBalanceBarSteps();
     }
 
     // Update is called once per frame
@@ -23,9 +23,17 @@ public class ElementalBalanceBarManager : MonoBehaviour
 
     }
 
-    private void updateSliderValues(float value)
+
+    private void InstantiateBalanceBarSteps()
     {
-        ElementalBalanceBarSlider.value = value;
+        foreach (int stepValue in _data.Steps)
+        {
+            float calculatedXPosition = ((ParentStepsTransform.sizeDelta.x / 2 ) * stepValue) / Mathf.Abs(_data.MaxValue);
+            GameObject leftStepInstance = GameObject.Instantiate(StepPrefab, Vector3.zero, Quaternion.identity, ParentStepsTransform);
+            GameObject rightStepInstance = GameObject.Instantiate(StepPrefab, Vector3.zero, Quaternion.identity, ParentStepsTransform);
+            leftStepInstance.GetComponent<RectTransform>().localPosition = new Vector3(-calculatedXPosition, 0, 0);
+            rightStepInstance.GetComponent<RectTransform>().localPosition = new Vector3(calculatedXPosition, 0, 0);
+        }
     }
 
 }

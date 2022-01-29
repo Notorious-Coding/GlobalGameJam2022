@@ -18,7 +18,7 @@ public class ElementalBalanceSO : ScriptableObject
     [Range(min: 10, max: 5000)]
     public float MaxValue;
 
-    public List<int> Intensities;
+    public List<int> Steps;
 
     public StatusEnum FirstStatus;
     public StatusEnum SecondStatus;
@@ -43,7 +43,7 @@ public class ElementalBalanceSO : ScriptableObject
     private void CheckCurrentIntensity()
     {
         float absElementalValue = Mathf.Abs(ElementalBalanceValue);
-        _statusGameEventData.intensity =  Intensities.LastOrDefault(val => absElementalValue >= val);
+        _statusGameEventData.intensity =  Steps.LastOrDefault(val => absElementalValue >= val);
 
     }
 
