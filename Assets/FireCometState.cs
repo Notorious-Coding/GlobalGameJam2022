@@ -15,6 +15,7 @@ public class FireCometState : State
     public override void OnStateEnter()
     {
         _targetedZone = Instantiate(_targetedZonePrefab, this.transform.position, Quaternion.identity);
+        IsStateComplete = false;
     }
 
     public override void HandleLogic()
