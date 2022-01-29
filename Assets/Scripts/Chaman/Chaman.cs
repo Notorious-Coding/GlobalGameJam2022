@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Chaman : MonoBehaviour
@@ -12,13 +10,8 @@ public class Chaman : MonoBehaviour
     {
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        TakeDamage(10);
-    }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage) 
     {
         _data.UpdateLife(-damage);
     }
