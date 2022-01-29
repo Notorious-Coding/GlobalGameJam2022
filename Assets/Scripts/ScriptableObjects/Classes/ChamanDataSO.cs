@@ -15,7 +15,7 @@ public class ChamanDataSO : ScriptableObject
     public void UpdateLife(int value)
     {
         Life += value;
-        OnLifeChangeEvent(Life);
+        OnLifeChangeEvent?.Invoke(Life);
     }
 
     public void Subscribe(OnLifeChangeDelegate takeDamageDelegate)
