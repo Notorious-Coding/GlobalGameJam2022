@@ -10,7 +10,6 @@ public class ElementalBalanceBarManager : MonoBehaviour
 
     public GameObject StepPrefab;
     public RectTransform ParentStepsTransform;
-    public Slider ElementalBalanceBarSlider;
     // Start is called before the first frame update
     void Start()
     {

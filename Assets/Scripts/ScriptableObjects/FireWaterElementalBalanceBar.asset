@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b4047026cdc87948b75fad4d8873ae2, type: 3}
   m_Name: FireWaterElementalBalanceBar
   m_EditorClassIdentifier: 
-  ElementalBalanceValue: 0
+  ElementalBalanceValue: -50
   MinValue: -500
   MaxValue: 500
-  StepSize: 250
-  FirstStatus: 0
-  SecondStatus: 0
-  CurrentStatus: 0
+  Steps: 64000000c80000002c01000090010000f4010000
+  FirstStatus: 1
+  SecondStatus: 2
