@@ -23,6 +23,7 @@ public class Projectile : MonoBehaviour
         {
             var enemy = collision.transform.GetComponent<Enemy>();
             enemy.TakeDamage(_damage);
+            Destroy(this.gameObject);
         }
     }
 }
