@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class HUDManager : MonoBehaviour
     ChamanDataSO _chamanData;
     [SerializeField]
     ElementalBalanceSO _elementalBalanceData;
+    private float _currentIntensity;
     public Slider ElementalBalanceBarSlider;
     public Slider HealthBarSlider;
     // Start is called before the first frame update
@@ -18,16 +20,38 @@ public class HUDManager : MonoBehaviour
         HealthBarSlider.value = _chamanData.Life;
         _chamanData.Subscribe(LifeChange);
         _elementalBalanceData.SubscribeToElementalBalanceValue(UpdateBalanceBarSliderValues);
+
     }
 
-    private void LifeChange(int newValue)
+    private void LifeChange(float newValue)
     {
         //Change health on UI
-        HealthBarSlider.value = newValue;
+        HealthBarSlider.value += newValue;
+        
     }
 
-    private void UpdateBalanceBarSliderValues(float value)
+    public void UpdateBalanceBarSliderValues(float value)
     {
-        ElementalBalanceBarSlider.value = value;
+        ElementalBalanceBarSlider.value += value;
+        float absElementalValue = Mathf.Abs(ElementalBalanceBarSlider.value);
+        float newIntensity = _elementalBalanceData.Steps.LastOrDefault(val => val <= absElementalValue);
+        if (newIntensity != _currentIntensity)
+        {
+            StatusGameEventData gameEventData = new StatusGameEventData();
+            gameEventData.Intensity = value;
+            if(ElementalBalanceBarSlider.value < 0)
+            {
+                gameEventData.Status = _elementalBalanceData.SecondStatus;
+            }
+            if (ElementalBalanceBarSlider.value == 0)
+            {
+                gameEventData.Status = StatusEnum.EmptyStatus;
+            }
+            if (ElementalBalanceBarSlider.value > 0)
+            {
+                gameEventData.Status = _elementalBalanceData.FirstStatus;
+            }
+            _elementalBalanceData.NotifyStatusChange(gameEventData);
+        }
     }
 }

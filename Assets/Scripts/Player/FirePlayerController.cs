@@ -22,7 +22,7 @@ public class FirePlayerController : PlayerController
 
     private void Update()
     {
-        Debug.Log(CurrentState);
+        //Debug.Log(CurrentState);
         if (CurrentState is BasicSpellState && CurrentState.IsStateComplete)
         {
             SetState(GetState<DefaultState>());

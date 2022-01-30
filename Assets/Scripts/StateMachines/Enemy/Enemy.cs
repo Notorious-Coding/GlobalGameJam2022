@@ -52,7 +52,7 @@ public class Enemy : StateMachine, ITargetLock
         GetState<Explode>().LockTarget(entity);
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         life -= amount;
     }
