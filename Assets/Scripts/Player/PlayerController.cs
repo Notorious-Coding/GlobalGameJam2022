@@ -12,6 +12,7 @@ public class PlayerController : StateMachine
     [SerializeField] private Cooldown _attackRate;
     [SerializeField] ElementalPlayerSO _elementalPlayerData;
     [SerializeField] ElementalBalanceSO _elementalBalanceData;
+    [SerializeField] private Animator _animator;
 
     private void Awake()
     {
@@ -35,7 +36,7 @@ public class PlayerController : StateMachine
         if (CurrentState.IsStateComplete && CurrentState is StunState)
             SetState(GetState<DefaultState>());
         
-        // Si on tirer un basic spell et qu'il est terminé
+        // Si on tirer un basic spell et qu'il est terminÃ©
         if(CurrentState.IsStateComplete && CurrentState is BasicSpellState)
         {
             SetState(GetState<DefaultState>());
@@ -46,6 +47,7 @@ public class PlayerController : StateMachine
     public void Move()
     {
         _rigidbody.MovePosition(this.transform.position + new Vector3(_moveInput.x, 0, _moveInput.y) * _elementalPlayerData.MoveSpeed * Time.deltaTime);
+        _animator.SetFloat("Walking",Mathf.Max(Mathf.Abs(_moveInput.x), Mathf.Abs(_moveInput.y)));
     }
 
     public void Turn()

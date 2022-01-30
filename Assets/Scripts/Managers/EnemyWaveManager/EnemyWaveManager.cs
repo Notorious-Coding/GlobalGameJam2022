@@ -10,7 +10,7 @@ public class EnemyWaveManager : MonoBehaviour
     [SerializeField] Transform _enemiesHolder;
     [SerializeField] Transform _spawnerPointsHolder;
     [SerializeField] Chaman _chaman;
-    List<Enemy> _currentWave = new List<Enemy>();
+    List<EnemySpawner> _currentWave = new List<EnemySpawner>();
 
     // Start is called before the first frame update
     void Start()

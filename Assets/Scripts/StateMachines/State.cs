@@ -9,22 +9,22 @@ public abstract class State : MonoBehaviour
 {
 
     /// <summary>
-    /// Cet état est-il terminé?
+    /// Cet Ã©tat est-il terminÃ©?
     /// </summary>
     public bool IsStateComplete { get; set; }
 
     /// <summary>
-    /// Permet d'éxecuter la logique de la méthode Update().
+    /// Permet d'Ã©xecuter la logique de la mÃ©thode Update().
     /// </summary>
     public abstract void HandleLogic();
 
     /// <summary>
-    /// Permet d'éxécuter la logique de la méthode FixedUpdate().
+    /// Permet d'Ã©xÃ©cuter la logique de la mÃ©thode FixedUpdate().
     /// </summary>
     public abstract void HandlePhysicsLogic();
 
     /// <summary>
-    /// Méthode permettant d'éxécuter de la logique a l'entrée de l'état. 
+    /// MÃ©thode permettant d'Ã©xÃ©cuter de la logique a l'entrÃ©e de l'Ã©tat. 
     /// </summary>
     public virtual void OnStateEnter()
     {
@@ -33,7 +33,7 @@ public abstract class State : MonoBehaviour
     }
 
     /// <summary>
-    /// Méthode permettant d'éxécuter de la logique a la sortie de l'état. 
+    /// MÃ©thode permettant d'Ã©xÃ©cuter de la logique a la sortie de l'Ã©tat. 
     /// </summa'ry>
     public virtual void OnStateExit()
     {

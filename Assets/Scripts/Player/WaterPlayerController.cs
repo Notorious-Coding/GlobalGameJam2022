@@ -40,9 +40,9 @@ public class WaterPlayerController : PlayerController
 
     public void OnFireMassiveSpell(InputAction.CallbackContext ctx)
     {
-        if(!(CurrentState is FireWaterBallSpellState) && !(CurrentState is StunState) && _massiveSpellcooldown.isEnded)
+        if(!(CurrentState is FireWaterWallSpellState) && !(CurrentState is StunState) && _massiveSpellcooldown.isEnded)
         {
-            SetState(GetState<FireWaterBallSpellState>());
+            SetState(GetState<FireWaterWallSpellState>());
             _massiveSpellcooldown.Stop();
             _massiveSpellcooldown.Start();
         }
