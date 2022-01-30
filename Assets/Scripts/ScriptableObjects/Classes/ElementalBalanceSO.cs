@@ -17,7 +17,6 @@ public class ElementalBalanceSO : ScriptableObject
     public float MinValue;
     [Range(min: 10, max: 5000)]
     public float MaxValue;
-
     public List<int> Steps;
 
     public StatusEnum FirstStatus;

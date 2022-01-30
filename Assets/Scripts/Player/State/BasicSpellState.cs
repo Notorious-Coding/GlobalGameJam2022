@@ -5,7 +5,6 @@ public class BasicSpellState : State
 {
 
     [SerializeField] ProjectileSpell _basicSpell;
-
     public override void HandleLogic()
     {
         if (!IsStateComplete)
