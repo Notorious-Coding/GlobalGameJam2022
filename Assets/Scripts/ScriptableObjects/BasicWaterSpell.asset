@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9455e80f2b6c8894ba2a4f61f32aece2, type: 3}
-  m_Name: BasicElementalPlayer
+  m_Script: {fileID: 11500000, guid: 6f0b416dcc58edb408a2475af8741c0d, type: 3}
+  m_Name: BasicWaterSpell
   m_EditorClassIdentifier: 
-  MoveSpeed: 10
-  AttackRate:
-    _cooldown: 0.5
-  BasicSpellData: {fileID: 11400000, guid: 403c4c46d6115594ba84b1b10f87978e, type: 2}
-  MassiveSpellData: {fileID: 0}
+  AmountOfMalus: 10
+  SpellStatus: 2
