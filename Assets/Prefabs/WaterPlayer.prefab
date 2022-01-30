@@ -167,7 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 78b8f3ecf519792418fb02962c874311, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: 78b8f3ecf519792418fb02962c874311,
+    type: 3}
   m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -265,7 +266,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1bd811cbc904a49908085b93853636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectilePrefab: {fileID: 6121447598619296771, guid: 251308432fb70bc41aaee0063f9f20a6, type: 3}
+  ProjectilePrefab: {fileID: 6121447598619296771, guid: af9c545e9ebcec245822ee05e37cf0a3,
+    type: 3}
   _firePoint: {fileID: 6097986089039539083}
 --- !u!136 &5160126734843992397
 CapsuleCollider:
@@ -347,7 +349,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1bd811cbc904a49908085b93853636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectilePrefab: {fileID: 6096605180984084545, guid: bf84437b38379bd45b39acc4f069d737, type: 3}
+  ProjectilePrefab: {fileID: 6096605180984084545, guid: bf84437b38379bd45b39acc4f069d737,
+    type: 3}
   _firePoint: {fileID: 6097986089039539083}
 --- !u!114 &-986099880042296612
 MonoBehaviour:
@@ -369,8 +372,12 @@ MonoBehaviour:
   _rigidbody: {fileID: 3109209487323045460}
   _attackRate:
     _cooldown: 0.2
-  _elementalPlayerData: {fileID: 11400000, guid: 076702bd47354ef4ba3051293092c00c, type: 2}
-  _elementalBalanceData: {fileID: 11400000, guid: a5b4029c68278564797d5583597af732, type: 2}
+  _elementalPlayerData: {fileID: 11400000, guid: e7a549dbfb6388d4ba368a902258df52,
+    type: 2}
+  _elementalBalanceData: {fileID: 11400000, guid: a5b4029c68278564797d5583597af732,
+    type: 2}
+  possibleStatus:
+  - {fileID: 11400000, guid: 3eeff6ea9a1c76e4da88683340a129ea, type: 2}
   _massiveSpellcooldown:
     _cooldown: 10
 --- !u!114 &7422002925097094420

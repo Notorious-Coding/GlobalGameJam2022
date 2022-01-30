@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,10 +13,34 @@ public class PlayerController : StateMachine
     [SerializeField] private Cooldown _attackRate;
     [SerializeField] ElementalPlayerSO _elementalPlayerData;
     [SerializeField] ElementalBalanceSO _elementalBalanceData;
+    [SerializeField]
+    public List<StatusSO> possibleStatus;
 
-    private void Awake()
+    private float _currentMoveSpeed;
+    protected void Awake()
     {
         SetState(GetState<DefaultState>());
+    }
+
+    private void Start()
+    {
+
+        _currentMoveSpeed = _elementalPlayerData.MoveSpeed;
+        _elementalBalanceData.SubscribeToElementalBalanceStatusChange(ManageStatusChange);
+    }
+
+    private void ManageStatusChange(StatusGameEventData eventData)
+    {
+        StatusSO currentStatus = possibleStatus.FirstOrDefault(status => status.statusBound.Equals(eventData.Status));
+        switch (currentStatus.statusBound)
+        {
+            case StatusEnum.Water:
+                _currentMoveSpeed = (currentStatus.statusIntensityMultiplier * eventData.IntensityIndex) * _currentMoveSpeed;
+                break;
+            default:
+                _currentMoveSpeed = _elementalPlayerData.MoveSpeed;
+                break;
+        }
     }
     // Update is called once per frame
     void FixedUpdate()

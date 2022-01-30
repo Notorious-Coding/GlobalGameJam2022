@@ -34,12 +34,14 @@ public class HUDManager : MonoBehaviour
     {
         ElementalBalanceBarSlider.value += value;
         float absElementalValue = Mathf.Abs(ElementalBalanceBarSlider.value);
-        float newIntensity = _elementalBalanceData.Steps.LastOrDefault(val => val <= absElementalValue);
+        int newIntensity = _elementalBalanceData.Steps.LastOrDefault(val => val <= absElementalValue);
+        int intensityIndex = _elementalBalanceData.Steps.IndexOf(newIntensity);
         if (newIntensity != _currentIntensity)
         {
             StatusGameEventData gameEventData = new StatusGameEventData();
             gameEventData.Intensity = value;
-            if(ElementalBalanceBarSlider.value < 0)
+            gameEventData.IntensityIndex = intensityIndex;
+            if (ElementalBalanceBarSlider.value < 0)
             {
                 gameEventData.Status = _elementalBalanceData.SecondStatus;
             }

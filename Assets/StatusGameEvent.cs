@@ -9,6 +9,8 @@ public class StatusGameEventData
 {
     public StatusEnum Status;
     public float Intensity;
+    public int IntensityIndex;
+
 
     // override object.Equals
     public override bool Equals(object obj)

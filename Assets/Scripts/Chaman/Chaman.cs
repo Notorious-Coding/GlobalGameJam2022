@@ -9,7 +9,6 @@ public class Chaman : Entity
     [SerializeField]
     ElementalBalanceSO _elemntalBarData;
     private StatusEnum _currentStatus;
-    private float _currentIntensity;
 
     [SerializeField]
     public List<StatusSO> possibleStatus;
@@ -34,7 +33,6 @@ public class Chaman : Entity
     private void ManageStatusChange(StatusGameEventData eventData)
     {
         _currentStatus = eventData.Status;
-        _currentIntensity = eventData.Intensity;
         StatusSO currentStatus = possibleStatus.FirstOrDefault(status => status.statusBound.Equals(eventData.Status));
         switch (_currentStatus)
         {
