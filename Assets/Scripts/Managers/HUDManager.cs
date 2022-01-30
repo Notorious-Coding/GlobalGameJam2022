@@ -46,9 +46,9 @@ public class HUDManager : MonoBehaviour
     private void LifeChange(float newValue)
     {
         //Change health on UI
-        HealthBarSlider.value = newValue;
-        _pvText.text = newValue.ToString();
-        if (newValue <= 0)
+        HealthBarSlider.value += newValue;
+        _pvText.text = HealthBarSlider.value.ToString();
+        if (HealthBarSlider.value <= 0)
         {
             SceneManager.LoadScene("EndGame");
         }
