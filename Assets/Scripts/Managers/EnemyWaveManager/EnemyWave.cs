@@ -4,6 +4,6 @@ using UnityEngine;
 [System.Serializable]
 public class EnemyWave
 {
-    public Enemy EnemyPrefab;
+    public EnemySpawner EnemyPrefab;
     public int Count;
  }
