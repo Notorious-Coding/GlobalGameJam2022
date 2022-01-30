@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Chaman : MonoBehaviour
+public class Chaman : Entity
 {
     [SerializeField]
     ChamanDataSO _data;
@@ -10,8 +10,7 @@ public class Chaman : MonoBehaviour
     {
     }
 
-
-    public void TakeDamage(int damage) 
+    public override void TakeDamage(int damage)
     {
         _data.UpdateLife(-damage);
     }
