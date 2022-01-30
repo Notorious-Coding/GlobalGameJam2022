@@ -14,7 +14,7 @@ public class FirePlayerController : PlayerController
         if (!(CurrentState is StunState))
         {
             Move();
-            // Pendant la vis�e de la comet, on ne veux plus tourner le player.
+            // Pendant la visée de la comet, on ne veux plus tourner le player.
             if (!(CurrentState is FireCometState))
                 Turn();
         }

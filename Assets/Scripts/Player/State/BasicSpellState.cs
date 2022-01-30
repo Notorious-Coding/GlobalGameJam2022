@@ -4,12 +4,13 @@ using UnityEngine;
 public class BasicSpellState : State
 {
 
-    [SerializeField] ProjectileSpell _basicSpell;
+    [SerializeField] protected ProjectileSpell _basicSpell;
+    [SerializeField] protected Animator _animator;
     public override void HandleLogic()
     {
         if (!IsStateComplete)
         {
-            _basicSpell.Fire();
+            _animator.SetTrigger("Attack1");
         }
         IsStateComplete = true;
     }
@@ -17,5 +18,10 @@ public class BasicSpellState : State
     public override void HandlePhysicsLogic()
     {
         return;
+    }
+
+    public void Fire()
+    {
+        _basicSpell.Fire();
     }
 }
