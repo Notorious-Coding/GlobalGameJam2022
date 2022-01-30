@@ -344,7 +344,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 9beb01d2-65e5-4136-90f9-d14352a0b23e
-    m_ActionName: Controllers/ValidateMassiveSpell
+    m_ActionName: Controllers/ValidateMassiveSpell[/XInputControllerWindows/rightStickPress]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controllers
@@ -365,10 +365,10 @@ MonoBehaviour:
   _states:
   - {fileID: 7971658459697682083}
   - {fileID: 2841254321290770003}
-  _moveSpeed: 10
+  - {fileID: -4112787824880791271}
   _rigidbody: {fileID: 7834665087021786161}
-  _attackRate:
-    _cooldown: 0.5
+  _elementalPlayerData: {fileID: 11400000, guid: 076702bd47354ef4ba3051293092c00c, type: 2}
+  _elementalBalanceData: {fileID: 11400000, guid: a5b4029c68278564797d5583597af732, type: 2}
 --- !u!114 &4257099837845433686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,4 +451,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stunTime:
-    _cooldown: 1
+    _cooldown: 2

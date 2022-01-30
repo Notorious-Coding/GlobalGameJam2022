@@ -27,4 +27,14 @@ public class WaterPlayerController : PlayerController
 
         CurrentState.HandleLogic();
     }
+
+    public void OnFireMassiveSpell(InputAction.CallbackContext ctx)
+    {
+        if(!(CurrentState is FireWaterBallSpellState) && _massiveSpellcooldown.isEnded)
+        {
+            SetState(GetState<FireWaterBallSpellState>());
+            _massiveSpellcooldown.Stop();
+            _massiveSpellcooldown.Start();
+        }
+    }
 }

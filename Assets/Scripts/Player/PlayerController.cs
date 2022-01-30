@@ -6,12 +6,11 @@ using UnityEngine.InputSystem;
 public class PlayerController : StateMachine
 {
     [Header("Mouvement")]
-    [SerializeField]
-    float _moveSpeed = 2.0f;
     [SerializeField] Rigidbody _rigidbody;
     Vector2 _moveInput;
     Vector2 _turnInput;
-    [SerializeField] Cooldown _attackRate;
+    [SerializeField] ElementalPlayerSO _elementalPlayerData;
+    [SerializeField] ElementalBalanceSO _elementalBalanceData;
 
     private void Awake()
     {
@@ -45,7 +44,7 @@ public class PlayerController : StateMachine
 
     public void Move()
     {
-        _rigidbody.MovePosition(this.transform.position + new Vector3(_moveInput.x, 0, _moveInput.y) * _moveSpeed * Time.deltaTime);
+        _rigidbody.MovePosition(this.transform.position + new Vector3(_moveInput.x, 0, _moveInput.y) * _elementalPlayerData.MoveSpeed * Time.deltaTime);
     }
 
     public void Turn()
@@ -66,11 +65,13 @@ public class PlayerController : StateMachine
 
     public void OnFireBasicSpell(InputAction.CallbackContext ctx)
     {
-        if (_attackRate.isEnded)
+        Debug.Log("Salut");
+        if (_elementalPlayerData.AttackRate.isEnded)
         {
+            _elementalBalanceData.UpdateElementalBalanceValue(_elementalPlayerData.BasicSpellData);
             SetState(GetState<BasicSpellState>());
-            _attackRate.Stop();
-            _attackRate.Start();
+            _elementalPlayerData.AttackRate.Stop();
+            _elementalPlayerData.AttackRate.Start();
         }
     }
 

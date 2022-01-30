@@ -40,7 +40,7 @@ public class FirePlayerController : PlayerController
         CurrentState.HandleLogic();
     }
 
-    public void OnFireBasicSpell(InputAction.CallbackContext ctx)
+    public new void OnFireBasicSpell(InputAction.CallbackContext ctx)
     {
         if(!(CurrentState is FireCometState) && !(CurrentState is StunState))
             base.OnFireBasicSpell(ctx);

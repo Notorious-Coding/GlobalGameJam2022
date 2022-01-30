@@ -33,8 +33,6 @@ public class Cooldown
         _isStarted = false;
     }
 
-    
-
     public bool isEnded
     {
         get
