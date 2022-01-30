@@ -10,15 +10,17 @@ public class HUDManager : MonoBehaviour
     [SerializeField]
     ElementalBalanceSO _elementalBalanceData;
     [SerializeField] PlayerJoinGameEventSO _playerJoinGameEventSO;
-    public Slider ElementalBalanceBarSlider;
-    public Slider HealthBarSlider;
-    public GameObject _UIJoinPlayerOne;
-    public GameObject _UIJoinPlayerTwo;
+    [SerializeField] Slider ElementalBalanceBarSlider;
+    [SerializeField] Slider HealthBarSlider;
+    [SerializeField] GameObject _UIJoinPlayerOne;
+    [SerializeField] GameObject _UIJoinPlayerTwo;
+    [SerializeField] Text _pvText;
     // Start is called before the first frame update
     void Start()
     {
         HealthBarSlider.maxValue = _chamanData.Life;
         HealthBarSlider.value = _chamanData.Life;
+        _pvText.text = _chamanData.Life.ToString();
         _chamanData.Subscribe(LifeChange);
         _elementalBalanceData.SubscribeToElementalBalanceValue(UpdateBalanceBarSliderValues);
         _playerJoinGameEventSO.Subscribe(HidePlayerNumberJoinUI);
@@ -41,6 +43,7 @@ public class HUDManager : MonoBehaviour
     {
         //Change health on UI
         HealthBarSlider.value = newValue;
+        _pvText.text = newValue.ToString();
     }
 
     private void UpdateBalanceBarSliderValues(float value)
