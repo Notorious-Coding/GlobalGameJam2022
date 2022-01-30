@@ -9,6 +9,7 @@ public class PlayerController : StateMachine
     [SerializeField] Rigidbody _rigidbody;
     Vector2 _moveInput;
     Vector2 _turnInput;
+    [SerializeField] private Cooldown _attackRate;
     [SerializeField] ElementalPlayerSO _elementalPlayerData;
     [SerializeField] ElementalBalanceSO _elementalBalanceData;
 
@@ -65,19 +66,17 @@ public class PlayerController : StateMachine
 
     public void OnFireBasicSpell(InputAction.CallbackContext ctx)
     {
-        Debug.Log("Salut");
-        if (_elementalPlayerData.AttackRate.isEnded)
+        if (_attackRate.isEnded && !(CurrentState is StunState))
         {
-            _elementalBalanceData.UpdateElementalBalanceValue(_elementalPlayerData.BasicSpellData);
+            //_elementalBalanceData.UpdateElementalBalanceValue(_elementalPlayerData.BasicSpellData);
             SetState(GetState<BasicSpellState>());
-            _elementalPlayerData.AttackRate.Stop();
-            _elementalPlayerData.AttackRate.Start();
+            _attackRate.Stop();
+            _attackRate.Start();
         }
     }
 
     public void Stun()
     {
         SetState(GetState<StunState>());
-        Debug.Log("Je suis stun", CurrentState);
     }
 }

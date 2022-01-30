@@ -90,3 +90,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerOneSpawn: {fileID: 0}
   _playerTwoSpawn: {fileID: 0}
+  _firePlayer: {fileID: 5557851060292523851, guid: fe1c7bb35714e104492e87f8388c1968, type: 3}
+  _waterPlayer: {fileID: 3497241654080814161, guid: 339c0aa2bfc24424fb05f50049c82d43, type: 3}
+  _playerInputManager: {fileID: 1568936455644946824}

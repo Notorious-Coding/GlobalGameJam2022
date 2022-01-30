@@ -11,8 +11,15 @@ public class WaterPlayerController : PlayerController
 
     void FixedUpdate()
     {
-        Move();
-        Turn();
+        if(!(CurrentState is StunState))
+        {
+            Move();
+            Turn();
+        }
+        else
+        {
+            Debug.Log("Stun");
+        }
 
         CurrentState.HandlePhysicsLogic();
     }
@@ -20,6 +27,9 @@ public class WaterPlayerController : PlayerController
 
     private void Update()
     {
+        if (CurrentState.IsStateComplete && CurrentState is StunState)
+            SetState(GetState<DefaultState>());
+
         if (CurrentState is BasicSpellState && CurrentState.IsStateComplete)
         {
             SetState(GetState<DefaultState>());
@@ -30,7 +40,7 @@ public class WaterPlayerController : PlayerController
 
     public void OnFireMassiveSpell(InputAction.CallbackContext ctx)
     {
-        if(!(CurrentState is FireWaterBallSpellState) && _massiveSpellcooldown.isEnded)
+        if(!(CurrentState is FireWaterBallSpellState) && !(CurrentState is StunState) && _massiveSpellcooldown.isEnded)
         {
             SetState(GetState<FireWaterBallSpellState>());
             _massiveSpellcooldown.Stop();
