@@ -11,6 +11,7 @@ public class PlayerSpawnManager : MonoBehaviour
     [SerializeField] GameObject _waterPlayer;
 
     [SerializeField] PlayerInputManager _playerInputManager;
+    [SerializeField] PlayerJoinGameEventSO _playerJoinGameEvent;
     // Start is called before the first frame update
     private void Start()
     {
@@ -20,5 +21,10 @@ public class PlayerSpawnManager : MonoBehaviour
     {
         playerInput.transform.position = playerInput.playerIndex == 1 ? _playerTwoSpawn.position : _playerOneSpawn.position;
         _playerInputManager.playerPrefab = _waterPlayer;
+        
+        if(_playerInputManager.playerCount == 2)
+        {
+            _playerJoinGameEvent.NotifyPlayersAreReady();
+        }
     }
 }

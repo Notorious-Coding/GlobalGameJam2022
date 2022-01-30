@@ -10,18 +10,21 @@ public class EnemyWaveManager : MonoBehaviour
     [SerializeField] Transform _enemiesHolder;
     [SerializeField] Transform _spawnerPointsHolder;
     [SerializeField] Chaman _chaman;
+    [SerializeField] PlayerJoinGameEventSO _playerJoinGameEventSO;
     List<EnemySpawner> _currentWave = new List<EnemySpawner>();
+    bool _arePlayerReady = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        _playerJoinGameEventSO.Subscribe(() => _arePlayerReady = true);
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        if (_wavesGameEventData.WaveRate.isEnded)
+        if (_wavesGameEventData.WaveRate.isEnded && _arePlayerReady)
         {
             _wavesGameEventData.WaveRate.Stop();
             _wavesGameEventData.WaveRate.Start();
