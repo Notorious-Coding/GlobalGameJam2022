@@ -9,8 +9,11 @@ public class HUDManager : MonoBehaviour
     ChamanDataSO _chamanData;
     [SerializeField]
     ElementalBalanceSO _elementalBalanceData;
+    [SerializeField] PlayerJoinGameEventSO _playerJoinGameEventSO;
     public Slider ElementalBalanceBarSlider;
     public Slider HealthBarSlider;
+    public GameObject _UIJoinPlayerOne;
+    public GameObject _UIJoinPlayerTwo;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +21,20 @@ public class HUDManager : MonoBehaviour
         HealthBarSlider.value = _chamanData.Life;
         _chamanData.Subscribe(LifeChange);
         _elementalBalanceData.SubscribeToElementalBalanceValue(UpdateBalanceBarSliderValues);
+        _playerJoinGameEventSO.Subscribe(HidePlayerNumberJoinUI);
+        
+    }
+
+    public void HidePlayerNumberJoinUI(int playerNumber)
+    {
+        if(playerNumber == 0)
+        {
+            _UIJoinPlayerOne.SetActive(false);
+        }
+        else
+        {
+            _UIJoinPlayerTwo.SetActive(false);
+        }
     }
 
     private void LifeChange(int newValue)

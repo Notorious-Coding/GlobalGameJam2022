@@ -21,7 +21,8 @@ public class PlayerSpawnManager : MonoBehaviour
     {
         playerInput.transform.position = playerInput.playerIndex == 1 ? _playerTwoSpawn.position : _playerOneSpawn.position;
         _playerInputManager.playerPrefab = _waterPlayer;
-        
+
+        _playerJoinGameEvent.NotifyPlayerJoin(playerInput.playerIndex);
         if(_playerInputManager.playerCount == 2)
         {
             _playerJoinGameEvent.NotifyPlayersAreReady();
