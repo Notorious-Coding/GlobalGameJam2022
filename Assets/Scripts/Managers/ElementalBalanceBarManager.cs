@@ -29,7 +29,9 @@ public class ElementalBalanceBarManager : MonoBehaviour
         {
             float calculatedXPosition = ((ParentStepsTransform.sizeDelta.x / 2 ) * stepValue) / Mathf.Abs(_data.MaxValue);
             GameObject leftStepInstance = GameObject.Instantiate(StepPrefab, Vector3.zero, Quaternion.identity, ParentStepsTransform);
+            leftStepInstance.transform.localEulerAngles = Vector3.zero;
             GameObject rightStepInstance = GameObject.Instantiate(StepPrefab, Vector3.zero, Quaternion.identity, ParentStepsTransform);
+            rightStepInstance.transform.localEulerAngles = Vector3.zero;
             leftStepInstance.GetComponent<RectTransform>().localPosition = new Vector3(-calculatedXPosition, 0, 0);
             rightStepInstance.GetComponent<RectTransform>().localPosition = new Vector3(calculatedXPosition, 0, 0);
         }

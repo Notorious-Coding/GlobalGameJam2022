@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 460040e844982b442b2fcb6952d4bbcb, type: 3}
   m_Name: ChamanData
   m_EditorClassIdentifier: 
-  Life: 0
+  Life: 500
