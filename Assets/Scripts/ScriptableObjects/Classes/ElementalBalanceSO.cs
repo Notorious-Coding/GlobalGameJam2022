@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public delegate void OnElementalBalanceValueChangeDelegate(float amount);
+public delegate void OnElementalBalanceValueChangeDelegate(float value);
 public delegate void OnElementalBalanceStatusGameEventDataDelegate(StatusGameEventData newStatus);
 public delegate void OnElementBalanceCurrentStatusIntenistyChangeDelegate(float newIntensity);
 
@@ -25,10 +25,17 @@ public class ElementalBalanceSO : ScriptableObject
 
     public event OnElementalBalanceValueChangeDelegate OnElementalBalanceValueChangeEvent;
     public event OnElementalBalanceStatusGameEventDataDelegate OnElementalBalanceStatusGameEventDataEvent;
-    public void UpdateElementalBalanceValue(int amount)
+    public void UpdateElementalBalanceValue(SpellSO spell)
     {
         StatusGameEventData oldStatusValue = _statusGameEventData;
-        ElementalBalanceValue += amount;
+        if (spell.Status.Equals(FirstStatus))
+        {
+            ElementalBalanceValue -= spell.AmountOfMalus;
+        }
+        if (spell.Status.Equals(SecondStatus))
+        {
+            ElementalBalanceValue += spell.AmountOfMalus;
+        }
         ManageElementalBalanceValueChange();
         CheckCurrentStatus();
         CheckCurrentIntensity();

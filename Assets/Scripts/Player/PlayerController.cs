@@ -9,10 +9,8 @@ public class PlayerController : StateMachine
     [SerializeField] Rigidbody _rigidbody;
     Vector2 _moveInput;
     Vector2 _turnInput;
-    [SerializeField] Cooldown _attackRate;
     [SerializeField] ElementalPlayerSO _elementalPlayerData;
     [SerializeField] ElementalBalanceSO _elementalBalanceData;
-    [SerializeField] SpellSO _basicSpellData;
 
     private void Awake()
     {
@@ -62,6 +60,7 @@ public class PlayerController : StateMachine
     {
         if (_elementalPlayerData.AttackRate.isEnded)
         {
+            _elementalBalanceData.UpdateElementalBalanceValue(_elementalPlayerData.BasicSpellData);
             SetState(GetState<BasicSpellState>());
             _elementalPlayerData.AttackRate.Stop();
             _elementalPlayerData.AttackRate.Start();
