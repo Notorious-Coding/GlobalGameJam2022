@@ -20,14 +20,21 @@ public class PlayerController : StateMachine
     // Update is called once per frame
     void FixedUpdate()
     {
-        Move();
-        Turn();
+        if (!(CurrentState is StunState))
+        {
+            Move();
+            Turn();
+        }
 
         CurrentState.HandlePhysicsLogic();
     }
 
     protected void Update()
     {
+
+        if (CurrentState.IsStateComplete && CurrentState is StunState)
+            SetState(GetState<DefaultState>());
+        
         // Si on tirer un basic spell et qu'il est terminé
         if(CurrentState.IsStateComplete && CurrentState is BasicSpellState)
         {
@@ -65,5 +72,11 @@ public class PlayerController : StateMachine
             _attackRate.Stop();
             _attackRate.Start();
         }
+    }
+
+    public void Stun()
+    {
+        SetState(GetState<StunState>());
+        Debug.Log("Je suis stun", CurrentState);
     }
 }

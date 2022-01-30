@@ -11,10 +11,13 @@ public class FirePlayerController : PlayerController
 
     void FixedUpdate()
     {
-        Move();
-        // Pendant la visée de la comet, on ne veux plus tourner le player.
-        if(!(CurrentState is FireCometState))
-            Turn();
+        if (!(CurrentState is StunState))
+        {
+            Move();
+            // Pendant la visée de la comet, on ne veux plus tourner le player.
+            if (!(CurrentState is FireCometState))
+                Turn();
+        }
 
         CurrentState.HandlePhysicsLogic();
     }
@@ -22,7 +25,9 @@ public class FirePlayerController : PlayerController
 
     private void Update()
     {
-        Debug.Log(CurrentState);
+        if (CurrentState.IsStateComplete && CurrentState is StunState)
+            SetState(GetState<DefaultState>());
+
         if (CurrentState is BasicSpellState && CurrentState.IsStateComplete)
         {
             SetState(GetState<DefaultState>());
@@ -37,13 +42,13 @@ public class FirePlayerController : PlayerController
 
     public void OnFireBasicSpell(InputAction.CallbackContext ctx)
     {
-        if(!(CurrentState is FireCometState))
+        if(!(CurrentState is FireCometState) && !(CurrentState is StunState))
             base.OnFireBasicSpell(ctx);
     }
 
     public void OnFireMassiveSpell(InputAction.CallbackContext ctx)
     {
-        if(!(CurrentState is FireCometState) && _massiveSpellcooldown.isEnded)
+        if(!(CurrentState is FireCometState) && !(CurrentState is StunState) && _massiveSpellcooldown.isEnded)
         {
             _massiveSpellcooldown.Stop();
             _massiveSpellcooldown.Start();

@@ -240,9 +240,10 @@ GameObject:
   - component: {fileID: 7834665087021786161}
   - component: {fileID: 7971658459697682083}
   - component: {fileID: 2841254321290770003}
+  - component: {fileID: -4112787824880791271}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -340,6 +341,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: f3395044-0692-403c-819a-1b0791bdbc7f
     m_ActionName: Controllers/FireMassiveSpell[/XInputControllerWindows/leftTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9beb01d2-65e5-4136-90f9-d14352a0b23e
+    m_ActionName: Controllers/ValidateMassiveSpell
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controllers
@@ -433,3 +438,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _basicSpell: {fileID: 4257099837845433686}
+--- !u!114 &-4112787824880791271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8580695586432550452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df43684e203542d4089fc695b1165720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stunTime:
+    _cooldown: 1

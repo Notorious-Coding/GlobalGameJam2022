@@ -128,9 +128,10 @@ GameObject:
   - component: {fileID: -3124069730024005407}
   - component: {fileID: -4170145129478152552}
   - component: {fileID: -5314232423561850602}
+  - component: {fileID: -2048128866204787563}
   m_Layer: 0
   m_Name: FirePlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -289,6 +290,7 @@ MonoBehaviour:
   - {fileID: -3124069730024005407}
   - {fileID: -4170145129478152552}
   - {fileID: -5314232423561850602}
+  - {fileID: -2048128866204787563}
   _moveSpeed: 10
   _rigidbody: {fileID: 6237458377669489998}
   _attackRate:
@@ -379,6 +381,20 @@ MonoBehaviour:
   _targetedZonePrefab: {fileID: 526212698801663929, guid: db2f2f9fd1c9e294fb818f37e3c9f09f, type: 3}
   _projectilePrefab: {fileID: 6253660907845699502, guid: f260feb3251c08149bc696aa3f849945, type: 3}
   _targetedZoneSpeed: 10
+--- !u!114 &-2048128866204787563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5557851060292523851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df43684e203542d4089fc695b1165720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stunTime:
+    _cooldown: 2
 --- !u!1 &5557851060969873808
 GameObject:
   m_ObjectHideFlags: 0
