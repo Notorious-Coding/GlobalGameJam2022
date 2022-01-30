@@ -7,6 +7,16 @@ public class MainMenuManager : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Demo");
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("Demo");
+    }
+    
+    public void Menu()
+    {
+        SceneManager.LoadScene("HomeScreen");
     }
 }

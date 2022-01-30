@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
@@ -47,6 +48,10 @@ public class HUDManager : MonoBehaviour
         //Change health on UI
         HealthBarSlider.value = newValue;
         _pvText.text = newValue.ToString();
+        if (newValue <= 0)
+        {
+            SceneManager.LoadScene("EndGame");
+        }
     }
 
     public void UpdateBalanceBarSliderValues(float value)
