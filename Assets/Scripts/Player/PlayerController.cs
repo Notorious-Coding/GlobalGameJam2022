@@ -60,6 +60,7 @@ public class PlayerController : StateMachine
 
     public void OnFireBasicSpell(InputAction.CallbackContext ctx)
     {
+        Debug.Log("Salut");
         if (_elementalPlayerData.AttackRate.isEnded)
         {
             SetState(GetState<BasicSpellState>());

@@ -3879,6 +3879,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 45856470, guid: 34a1d60f4f4b67d4c92cec951f3205ce, type: 3}
+      propertyPath: _firePlayer
+      value: 
+      objectReference: {fileID: 5557851060292523851, guid: fe1c7bb35714e104492e87f8388c1968, type: 3}
+    - target: {fileID: 45856470, guid: 34a1d60f4f4b67d4c92cec951f3205ce, type: 3}
+      propertyPath: _waterPlayer
+      value: 
+      objectReference: {fileID: 3497241654080814161, guid: 339c0aa2bfc24424fb05f50049c82d43, type: 3}
+    - target: {fileID: 45856470, guid: 34a1d60f4f4b67d4c92cec951f3205ce, type: 3}
       propertyPath: _playerOneSpawn
       value: 
       objectReference: {fileID: 1642294421}
@@ -3886,6 +3894,10 @@ PrefabInstance:
       propertyPath: _playerTwoSpawn
       value: 
       objectReference: {fileID: 472733716}
+    - target: {fileID: 45856470, guid: 34a1d60f4f4b67d4c92cec951f3205ce, type: 3}
+      propertyPath: _playerInputManager
+      value: 
+      objectReference: {fileID: 1981538776}
     - target: {fileID: 692175279987601351, guid: 34a1d60f4f4b67d4c92cec951f3205ce, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4130,6 +4142,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903846151}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1981538776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1568936455644946824, guid: 34a1d60f4f4b67d4c92cec951f3205ce, type: 3}
+  m_PrefabInstance: {fileID: 1782145356}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2047448487
 GameObject:
   m_ObjectHideFlags: 0
