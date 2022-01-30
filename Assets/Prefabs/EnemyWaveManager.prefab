@@ -43,13 +43,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62566ddd50cc91749babe2ae9b59be67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firstWave: []
-  _wavesEventsHandler: {fileID: 0}
+  _firstWave:
+  - EnemyPrefab: {fileID: 1746009193424713385, guid: c0aa0c618e544c446b851128cf5c8f81,
+      type: 3}
+    Count: 5
+  _wavesEventsHandler: {fileID: 11400000, guid: 9e1954f3d01bb0e46a3e62d13c69be93,
+    type: 2}
   _wavesGameEventData:
-    CurrentWaveCounter: 1
+    CurrentWaveCounter: 0
     WaveRate:
-      _cooldown: 0
-    FirstWaveEnemyCount: 0
-    EnemyCountMultiplicator: 0
+      _cooldown: 25
+    EnemyCountMultiplicator: 1.25
   _enemiesHolder: {fileID: 0}
-  _spawnerPoints: []
+  _spawnerPointsHolder: {fileID: 0}
+  _chaman: {fileID: 0}
