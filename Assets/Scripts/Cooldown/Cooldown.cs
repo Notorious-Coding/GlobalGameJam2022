@@ -6,7 +6,8 @@ public class Cooldown
     private float _started = 0f;
     private bool _isStarted;
     [SerializeField]
-    private float _cooldown;
+    public float _cooldown;
+
 
     public float TimeRemaining
     {

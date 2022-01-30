@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9455e80f2b6c8894ba2a4f61f32aece2, type: 3}
-  m_Name: FireElementalPlayer
+  m_Name: FireElemental
   m_EditorClassIdentifier: 
-  MoveSpeed: 10.79
+  MoveSpeed: 10
   BasicSpellData: {fileID: 11400000, guid: 0a2e6404c4aa872419568065d05dad3e, type: 2}
   MassiveSpellData: {fileID: 0}

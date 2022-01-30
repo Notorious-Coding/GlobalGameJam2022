@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 
-public abstract class Entity : MonoBehaviour, IDamagable
+public abstract class Entity : StateMachine, IDamagable
 {
-    public abstract void TakeDamage(int damage);
+    public abstract void TakeDamage(float damage);
 }
 

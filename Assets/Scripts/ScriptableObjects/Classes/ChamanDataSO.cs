@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public delegate void OnLifeChangeDelegate(int damageTaken);
+public delegate void OnLifeChangeDelegate(float damageTaken);
 
 [CreateAssetMenu(menuName = "ChamanData")]
 public class ChamanDataSO : ScriptableObject
@@ -12,11 +12,11 @@ public class ChamanDataSO : ScriptableObject
 
     public event OnLifeChangeDelegate OnLifeChangeEvent;
 
-    public void UpdateLife(int value)
+    public void UpdateLife(float value)
     {
-        Life += value;
-        OnLifeChangeEvent?.Invoke(Life);
+        OnLifeChangeEvent?.Invoke(value);
     }
+    
 
     public void Subscribe(OnLifeChangeDelegate takeDamageDelegate)
     {

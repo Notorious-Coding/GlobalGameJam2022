@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2228820859620809401}
   - component: {fileID: 8346443456328750640}
+  - component: {fileID: 3764464815901606987}
+  - component: {fileID: 8600142906332514113}
   m_Layer: 0
   m_Name: Chaman
   m_TagString: Untagged
@@ -44,7 +46,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5142d4f7b16aa0e4cb1a2f503fc51027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _states:
+  - {fileID: 3764464815901606987}
+  - {fileID: 8600142906332514113}
   _data: {fileID: 11400000, guid: 8ba88c36245bf654eb44af552c172885, type: 2}
+  _elemntalBarData: {fileID: 11400000, guid: a5b4029c68278564797d5583597af732, type: 2}
+  possibleStatus:
+  - {fileID: 11400000, guid: d8090a37906934c489ea8e1640f96094, type: 2}
+--- !u!114 &3764464815901606987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8346443456328750798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddecd96dadde9b041b7c4e37b8206853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8600142906332514113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8346443456328750798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2751cfe2692df4249afe3ebac3df9a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chamanData: {fileID: 11400000, guid: 8ba88c36245bf654eb44af552c172885, type: 2}
 --- !u!1001 &2321323425870428928
 PrefabInstance:
   m_ObjectHideFlags: 0

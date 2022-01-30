@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,11 +13,44 @@ public class PlayerController : StateMachine
     [SerializeField] private Cooldown _attackRate;
     [SerializeField] ElementalPlayerSO _elementalPlayerData;
     [SerializeField] ElementalBalanceSO _elementalBalanceData;
+    [SerializeField]
+    public List<StatusSO> possibleStatus;
     [SerializeField] private Animator _animator;
 
-    private void Awake()
+    private float _initialAttackRate;
+    private float _currentMoveSpeed;
+    private float _currentStepIntensity = 0;
+    protected void Awake()
     {
         SetState(GetState<DefaultState>());
+    }
+
+    private void Start()
+    {
+        _initialAttackRate = _attackRate._cooldown;
+        _currentMoveSpeed = _elementalPlayerData.MoveSpeed;
+        _elementalBalanceData.SubscribeToElementalBalanceStatusChange(ManageStatusChange);
+    }
+
+    private void ManageStatusChange(StatusGameEventData eventData)
+    {
+        StatusSO currentStatus = possibleStatus.FirstOrDefault(status => status.statusBound.Equals(eventData.Status));
+
+        if(currentStatus != null)
+        {
+            switch (currentStatus.statusBound)
+            {
+                case StatusEnum.Water:
+                    _attackRate._cooldown = _initialAttackRate + ( eventData.IntensityIndex * currentStatus.statusIntensityIncrementValue);
+                    break;
+                default:
+                    _attackRate._cooldown = _initialAttackRate;
+                    break;
+            }
+        } else
+        {
+            _currentMoveSpeed = _elementalPlayerData.MoveSpeed;
+        }
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -46,7 +80,7 @@ public class PlayerController : StateMachine
 
     public void Move()
     {
-        _rigidbody.MovePosition(this.transform.position + new Vector3(_moveInput.x, 0, _moveInput.y) * _elementalPlayerData.MoveSpeed * Time.deltaTime);
+        _rigidbody.MovePosition(this.transform.position + new Vector3(_moveInput.x, 0, _moveInput.y) * _currentMoveSpeed * Time.deltaTime);
         _animator.SetFloat("Walking",Mathf.Max(Mathf.Abs(_moveInput.x), Mathf.Abs(_moveInput.y)));
     }
 
@@ -70,7 +104,7 @@ public class PlayerController : StateMachine
     {
         if (_attackRate.isEnded && !(CurrentState is StunState))
         {
-            //_elementalBalanceData.UpdateElementalBalanceValue(_elementalPlayerData.BasicSpellData);
+            _elementalBalanceData.OnSpellLaunch(_elementalPlayerData.BasicSpellData);
             SetState(GetState<BasicSpellState>());
             _attackRate.Stop();
             _attackRate.Start();

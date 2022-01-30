@@ -5,10 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-public struct StatusGameEventData
+public class StatusGameEventData
 {
-    public StatusEnum status;
-    public int intensity;
+    public StatusEnum Status;
+    public float Intensity;
+    public int IntensityIndex;
+
 
     // override object.Equals
     public override bool Equals(object obj)
@@ -20,7 +22,7 @@ public struct StatusGameEventData
         else
         {
             StatusGameEventData statusGameEventData = (StatusGameEventData)obj;
-            return statusGameEventData.status.Equals(this.status) && statusGameEventData.intensity == intensity;
+            return statusGameEventData.Status.Equals(Status) && statusGameEventData.Intensity == Intensity;
         }
     }
 }
