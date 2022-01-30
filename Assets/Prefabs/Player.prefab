@@ -240,9 +240,10 @@ GameObject:
   - component: {fileID: 7834665087021786161}
   - component: {fileID: 7971658459697682083}
   - component: {fileID: 2841254321290770003}
+  - component: {fileID: -4112787824880791271}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -364,9 +365,8 @@ MonoBehaviour:
   _states:
   - {fileID: 7971658459697682083}
   - {fileID: 2841254321290770003}
+  - {fileID: -4112787824880791271}
   _rigidbody: {fileID: 7834665087021786161}
-  _attackRate:
-    _cooldown: 0.5
   _elementalPlayerData: {fileID: 11400000, guid: 076702bd47354ef4ba3051293092c00c, type: 2}
   _elementalBalanceData: {fileID: 11400000, guid: a5b4029c68278564797d5583597af732, type: 2}
 --- !u!114 &4257099837845433686
@@ -382,7 +382,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 6121447598619296771, guid: 251308432fb70bc41aaee0063f9f20a6, type: 3}
-  SpellData: {fileID: 0}
   _firePoint: {fileID: 1386006867947622894}
 --- !u!136 &878961448
 CapsuleCollider:
@@ -439,3 +438,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _basicSpell: {fileID: 4257099837845433686}
+--- !u!114 &-4112787824880791271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8580695586432550452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df43684e203542d4089fc695b1165720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stunTime:
+    _cooldown: 2

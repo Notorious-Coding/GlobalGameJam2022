@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3497241652958247793}
   - component: {fileID: 3497241652958247806}
   - component: {fileID: 3497241652958247807}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3497241653688601225}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,9 +131,10 @@ GameObject:
   - component: {fileID: 8206712012178481504}
   - component: {fileID: 2925834846001729809}
   - component: {fileID: -986099880042296612}
-  m_Layer: 0
+  - component: {fileID: 7422002925097094420}
+  m_Layer: 6
   m_Name: WaterPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -265,7 +266,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 6121447598619296771, guid: 251308432fb70bc41aaee0063f9f20a6, type: 3}
-  SpellData: {fileID: 0}
   _firePoint: {fileID: 6097986089039539083}
 --- !u!136 &5160126734843992397
 CapsuleCollider:
@@ -348,7 +348,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 6096605180984084545, guid: bf84437b38379bd45b39acc4f069d737, type: 3}
-  SpellData: {fileID: 0}
   _firePoint: {fileID: 6097986089039539083}
 --- !u!114 &-986099880042296612
 MonoBehaviour:
@@ -366,14 +365,28 @@ MonoBehaviour:
   - {fileID: 2957974312481606651}
   - {fileID: 4290080858989999490}
   - {fileID: 8206712012178481504}
+  - {fileID: 7422002925097094420}
   _rigidbody: {fileID: 3109209487323045460}
   _attackRate:
-    _cooldown: 0.5
+    _cooldown: 0.2
   _elementalPlayerData: {fileID: 11400000, guid: 076702bd47354ef4ba3051293092c00c, type: 2}
   _elementalBalanceData: {fileID: 11400000, guid: a5b4029c68278564797d5583597af732, type: 2}
-  _basicSpellData: {fileID: 0}
   _massiveSpellcooldown:
     _cooldown: 10
+--- !u!114 &7422002925097094420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3497241654080814161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df43684e203542d4089fc695b1165720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stunTime:
+    _cooldown: 2
 --- !u!1 &3535236821097859401
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,7 +396,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6097986089039539083}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,7 +428,7 @@ GameObject:
   - component: {fileID: 7117636210674763062}
   - component: {fileID: 429912942823704678}
   - component: {fileID: 3543893190048803902}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

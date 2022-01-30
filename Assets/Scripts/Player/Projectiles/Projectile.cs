@@ -26,5 +26,11 @@ public class Projectile : MonoBehaviour
             if(_destroyOnHit)
                 Destroy(this.gameObject);
         }
+        if (collision.transform.CompareTag("Player"))
+        {
+            var player = collision.transform.GetComponent<PlayerController>();
+            player.Stun();
+            Destroy(this.gameObject);
+        }
     }
 }
