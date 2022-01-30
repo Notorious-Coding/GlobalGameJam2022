@@ -962,6 +962,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.53570557
       objectReference: {fileID: 0}
+    - target: {fileID: 1411390694, guid: 899d9860fff5d8345944ce5db0aeedea, type: 3}
+      propertyPath: m_Text
+      value: 'Appuyez sur une touche pour rejoindre
+
+        (Player 2
+
+        )'
+      objectReference: {fileID: 0}
     - target: {fileID: 6378469258998460443, guid: 899d9860fff5d8345944ce5db0aeedea,
         type: 3}
       propertyPath: m_AnchorMax.y
