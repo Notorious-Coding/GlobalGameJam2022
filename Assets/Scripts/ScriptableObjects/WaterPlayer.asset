@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 10
   BasicSpellData: {fileID: 11400000, guid: 403c4c46d6115594ba84b1b10f87978e, type: 2}
-  MassiveSpellData: {fileID: 0}
+  MassiveSpellData: {fileID: 11400000, guid: 93e275a726347ef458a5a34f8c06c5e4, type: 2}
