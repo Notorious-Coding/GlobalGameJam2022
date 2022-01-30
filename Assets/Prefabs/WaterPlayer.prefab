@@ -123,7 +123,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3497241654080814174}
   - component: {fileID: 3497241654080814175}
-  - component: {fileID: 3497241654080814162}
   - component: {fileID: 8973477587151673139}
   - component: {fileID: 5160126734843992397}
   - component: {fileID: 3109209487323045460}
@@ -131,6 +130,7 @@ GameObject:
   - component: {fileID: 4290080858989999490}
   - component: {fileID: 8206712012178481504}
   - component: {fileID: 2925834846001729809}
+  - component: {fileID: -986099880042296612}
   m_Layer: 0
   m_Name: WaterPlayer
   m_TagString: Untagged
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3497241654080814162}
+      - m_Target: {fileID: -986099880042296612}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
@@ -197,20 +197,8 @@ MonoBehaviour:
     m_ActionName: Controllers/Move[/XInputControllerWindows/leftStick,/Keyboard/z,/Keyboard/s,/Keyboard/q,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3497241654080814162}
+      - m_Target: {fileID: -986099880042296612}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnTurn
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: FireCometState, Assembly-CSharp
         m_MethodName: OnTurn
         m_Mode: 0
         m_Arguments:
@@ -225,7 +213,7 @@ MonoBehaviour:
     m_ActionName: Controllers/Turn[/XInputControllerWindows/rightStick]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3497241654080814162}
+      - m_Target: {fileID: -986099880042296612}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: OnFireBasicSpell
         m_Mode: 0
@@ -241,8 +229,8 @@ MonoBehaviour:
     m_ActionName: Controllers/Fire[/XInputControllerWindows/leftTrigger]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3497241654080814162}
-        m_TargetAssemblyTypeName: FirePlayerController, Assembly-CSharp
+      - m_Target: {fileID: -986099880042296612}
+        m_TargetAssemblyTypeName: WaterPlayerController, Assembly-CSharp
         m_MethodName: OnFireMassiveSpell
         m_Mode: 0
         m_Arguments:
@@ -256,19 +244,7 @@ MonoBehaviour:
     m_ActionId: f3395044-0692-403c-819a-1b0791bdbc7f
     m_ActionName: Controllers/FireMassiveSpell[/XInputControllerWindows/leftTrigger]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: FireCometState, Assembly-CSharp
-        m_MethodName: OnValidateMassiveSpell
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 9beb01d2-65e5-4136-90f9-d14352a0b23e
     m_ActionName: Controllers/ValidateMassiveSpell[/XInputControllerWindows/rightStickPress]
   m_NeverAutoSwitchControlSchemes: 0
@@ -276,28 +252,6 @@ MonoBehaviour:
   m_DefaultActionMap: Controllers
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &3497241654080814162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3497241654080814161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb8a4fb00b552c144a29e3ba90d159d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _states:
-  - {fileID: 2957974312481606651}
-  - {fileID: 4290080858989999490}
-  - {fileID: 8206712012178481504}
-  _moveSpeed: 10
-  _rigidbody: {fileID: 3109209487323045460}
-  _attackRate:
-    _cooldown: 0.5
-  _massiveSpellcooldown:
-    _cooldown: 10
 --- !u!114 &8973477587151673139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 6121447598619296771, guid: 251308432fb70bc41aaee0063f9f20a6, type: 3}
+  SpellData: {fileID: 0}
   _firePoint: {fileID: 6097986089039539083}
 --- !u!136 &5160126734843992397
 CapsuleCollider:
@@ -393,7 +348,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 6096605180984084545, guid: bf84437b38379bd45b39acc4f069d737, type: 3}
+  SpellData: {fileID: 0}
   _firePoint: {fileID: 6097986089039539083}
+--- !u!114 &-986099880042296612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3497241654080814161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b49c2fd75c08a40b6bd5a2c9b7c568, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _states:
+  - {fileID: 2957974312481606651}
+  - {fileID: 4290080858989999490}
+  - {fileID: 8206712012178481504}
+  _rigidbody: {fileID: 3109209487323045460}
+  _attackRate:
+    _cooldown: 0.5
+  _elementalPlayerData: {fileID: 11400000, guid: 076702bd47354ef4ba3051293092c00c, type: 2}
+  _elementalBalanceData: {fileID: 11400000, guid: a5b4029c68278564797d5583597af732, type: 2}
+  _basicSpellData: {fileID: 0}
+  _massiveSpellcooldown:
+    _cooldown: 10
 --- !u!1 &3535236821097859401
 GameObject:
   m_ObjectHideFlags: 0
