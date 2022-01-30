@@ -945,23 +945,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 500098990, guid: 899d9860fff5d8345944ce5db0aeedea, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.020019531
-      objectReference: {fileID: 0}
-    - target: {fileID: 508858463, guid: 899d9860fff5d8345944ce5db0aeedea, type: 3}
-      propertyPath: _playerJoinGameEventSO
-      value: 
-      objectReference: {fileID: 11400000, guid: 7af00b30b5348384799cb1f9b731143c,
-        type: 2}
-    - target: {fileID: 605422120, guid: 899d9860fff5d8345944ce5db0aeedea, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 1.2200317
-      objectReference: {fileID: 0}
-    - target: {fileID: 605422120, guid: 899d9860fff5d8345944ce5db0aeedea, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.53570557
-      objectReference: {fileID: 0}
     - target: {fileID: 6378469258998460443, guid: 899d9860fff5d8345944ce5db0aeedea,
         type: 3}
       propertyPath: m_AnchorMax.y

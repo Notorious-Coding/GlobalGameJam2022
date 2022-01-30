@@ -7,6 +7,7 @@ public class Enemy : StateMachine, ITargetLock
 
     [SerializeField] GameObject _explosionEffect;
     [SerializeField] float life;
+    [SerializeField] private float _range;
 
     void Awake()
     {
@@ -25,7 +26,7 @@ public class Enemy : StateMachine, ITargetLock
             SetState(GetState<Die>());
         }
         // Dès qu'on est assez proche du chaman
-        if(Vector3.Distance(_chaman.position, transform.position) <= 2)
+        if(Vector3.Distance(_chaman.position, transform.position) <= _range)
         {
             //Si on est pas en état d'explosion ou mort, alors on explose.
             if(!(CurrentState is Explode) && !(CurrentState is Die))
