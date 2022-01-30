@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0b416dcc58edb408a2475af8741c0d, type: 3}
   m_Name: BasicWaterSpell
   m_EditorClassIdentifier: 
-  AmountOfMalus: 150
+  AmountOfMalus: 50
   Status: 2

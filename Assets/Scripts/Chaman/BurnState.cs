@@ -10,10 +10,12 @@ public class BurnState : State
 
     private Cooldown _burnRate;
     private StatusSO _statusDatas;
+    private int _intensityIndex;
 
 
-    public void SetStateDatas(StatusSO statusDatas)
+    public void SetStateDatas(StatusSO statusDatas, int intensityIndex)
     {
+        _intensityIndex = intensityIndex;
         _statusDatas = statusDatas;
         _burnRate = new Cooldown(_statusDatas.timeBetweenStatusApliance);
     }
@@ -23,7 +25,7 @@ public class BurnState : State
         {
             if (_burnRate.isEnded && !IsStateComplete)
             {
-                _chamanData.UpdateLife(-_statusDatas.damages * _statusDatas.statusIntensityMultiplier);
+                _chamanData.UpdateLife(-(_statusDatas.damages + (_statusDatas.statusIntensityIncrementValue * _intensityIndex)));
                 _burnRate.Stop();
                 _burnRate.Start();
             }

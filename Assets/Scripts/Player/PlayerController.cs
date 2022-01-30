@@ -17,7 +17,9 @@ public class PlayerController : StateMachine
     public List<StatusSO> possibleStatus;
     [SerializeField] private Animator _animator;
 
+    private float _initialAttackRate;
     private float _currentMoveSpeed;
+    private float _currentStepIntensity = 0;
     protected void Awake()
     {
         SetState(GetState<DefaultState>());
@@ -25,7 +27,7 @@ public class PlayerController : StateMachine
 
     private void Start()
     {
-
+        _initialAttackRate = _attackRate._cooldown;
         _currentMoveSpeed = _elementalPlayerData.MoveSpeed;
         _elementalBalanceData.SubscribeToElementalBalanceStatusChange(ManageStatusChange);
     }
@@ -33,14 +35,21 @@ public class PlayerController : StateMachine
     private void ManageStatusChange(StatusGameEventData eventData)
     {
         StatusSO currentStatus = possibleStatus.FirstOrDefault(status => status.statusBound.Equals(eventData.Status));
-        switch (currentStatus.statusBound)
+
+        if(currentStatus != null)
         {
-            case StatusEnum.Water:
-                _currentMoveSpeed = (currentStatus.statusIntensityMultiplier * eventData.IntensityIndex) * _currentMoveSpeed;
-                break;
-            default:
-                _currentMoveSpeed = _elementalPlayerData.MoveSpeed;
-                break;
+            switch (currentStatus.statusBound)
+            {
+                case StatusEnum.Water:
+                    _attackRate._cooldown = _initialAttackRate + ( eventData.IntensityIndex * currentStatus.statusIntensityIncrementValue);
+                    break;
+                default:
+                    _attackRate._cooldown = _initialAttackRate;
+                    break;
+            }
+        } else
+        {
+            _currentMoveSpeed = _elementalPlayerData.MoveSpeed;
         }
     }
     // Update is called once per frame
@@ -71,7 +80,7 @@ public class PlayerController : StateMachine
 
     public void Move()
     {
-        _rigidbody.MovePosition(this.transform.position + new Vector3(_moveInput.x, 0, _moveInput.y) * _elementalPlayerData.MoveSpeed * Time.deltaTime);
+        _rigidbody.MovePosition(this.transform.position + new Vector3(_moveInput.x, 0, _moveInput.y) * _currentMoveSpeed * Time.deltaTime);
         _animator.SetFloat("Walking",Mathf.Max(Mathf.Abs(_moveInput.x), Mathf.Abs(_moveInput.y)));
     }
 

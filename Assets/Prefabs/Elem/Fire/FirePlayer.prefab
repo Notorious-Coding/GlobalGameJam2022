@@ -298,10 +298,12 @@ MonoBehaviour:
   _rigidbody: {fileID: 6237458377669489998}
   _attackRate:
     _cooldown: 0.5
-  _elementalPlayerData: {fileID: 11400000, guid: 076702bd47354ef4ba3051293092c00c,
+  _elementalPlayerData: {fileID: 11400000, guid: 86808c0c99079ad4da4e9a5155741896,
     type: 2}
   _elementalBalanceData: {fileID: 11400000, guid: a5b4029c68278564797d5583597af732,
     type: 2}
+  possibleStatus:
+  - {fileID: 11400000, guid: 3eeff6ea9a1c76e4da88683340a129ea, type: 2}
   _animator: {fileID: 1044256926158386096}
   _massiveSpellcooldown:
     _cooldown: 5
@@ -364,6 +366,9 @@ MonoBehaviour:
     type: 3}
   _targetedZoneSpeed: 10
   _animator: {fileID: 1044256926158386096}
+  _elementalBalanceSO: {fileID: 11400000, guid: a5b4029c68278564797d5583597af732,
+    type: 2}
+  _spellData: {fileID: 11400000, guid: a609407089fac6045ab2d3e5424e90a7, type: 2}
 --- !u!136 &4194457896801759831
 CapsuleCollider:
   m_ObjectHideFlags: 0

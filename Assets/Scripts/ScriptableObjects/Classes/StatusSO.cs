@@ -7,6 +7,6 @@ public class StatusSO: ScriptableObject
 {
     public StatusEnum statusBound;
     public float damages;
-    public float statusIntensityMultiplier;
+    public float statusIntensityIncrementValue;
     public float timeBetweenStatusApliance;
 }

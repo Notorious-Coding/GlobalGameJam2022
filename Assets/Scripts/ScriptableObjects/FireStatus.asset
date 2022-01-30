@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: FireStatus
   m_EditorClassIdentifier: 
   statusBound: 1
-  damages: 50
-  statusIntensityMultiplier: 1.25
+  damages: 5
+  statusIntensityIncrementValue: 5
   timeBetweenStatusApliance: 1

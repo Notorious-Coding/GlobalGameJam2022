@@ -38,7 +38,7 @@ public class Chaman : Entity
         {
             case StatusEnum.Fire:
                 SetState(GetState<BurnState>());
-                GetState<BurnState>().SetStateDatas(currentStatus);
+                GetState<BurnState>().SetStateDatas(currentStatus, eventData.IntensityIndex);
                 break;
             default:
                 SetState(GetState<DefaultState>());

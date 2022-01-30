@@ -11,6 +11,8 @@ public class FireCometState : State
     [SerializeField] GameObject _projectilePrefab;
     [SerializeField] float _targetedZoneSpeed;
     [SerializeField] private Animator _animator;
+    [SerializeField] private ElementalBalanceSO _elementalBalanceSO;
+    [SerializeField] private SpellSO _spellData;
 
 
     public override void OnStateEnter()
@@ -37,6 +39,7 @@ public class FireCometState : State
 
     public void FireComet()
     {
+        _elementalBalanceSO.OnSpellLaunch(_spellData);
         Instantiate(_projectilePrefab, _targetedZone.transform.position, Quaternion.identity);
         Destroy(_targetedZone,0.5f);
     }

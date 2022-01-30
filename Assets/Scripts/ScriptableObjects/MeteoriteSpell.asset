@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62bb28cb7aea4884087d48390b496fd2, type: 3}
-  m_Name: WaterStatus
+  m_Script: {fileID: 11500000, guid: 6f0b416dcc58edb408a2475af8741c0d, type: 3}
+  m_Name: MeteoriteSpell
   m_EditorClassIdentifier: 
-  statusBound: 2
-  damages: 0
-  statusIntensityIncrementValue: 0.5
-  timeBetweenStatusApliance: 0
+  AmountOfMalus: 250
+  Status: 1

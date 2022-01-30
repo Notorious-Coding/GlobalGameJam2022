@@ -31,18 +31,18 @@ public class ElementalBalanceSO : ScriptableObject
     {
         if (spell.Status.Equals(FirstStatus))
         {
-            AdjustBalanceValueChangeEvent(spell.AmountOfMalus);
+            AdjustBalanceValueChangeEvent?.Invoke(spell.AmountOfMalus);
         }
 
         if (spell.Status.Equals(SecondStatus))
         {
-            AdjustBalanceValueChangeEvent(-spell.AmountOfMalus);
+            AdjustBalanceValueChangeEvent?.Invoke(-spell.AmountOfMalus);
         }
     }
 
     public void NotifyStatusChange(StatusGameEventData eventData)
     {
-        OnElementalBalanceStatusChangeEvent(eventData);
+        OnElementalBalanceStatusChangeEvent?.Invoke(eventData);
     }
 
 
